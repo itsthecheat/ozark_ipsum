@@ -1,0 +1,6 @@
+.generatedText {
+  padding-top: 150px;
+}
+:global .container {
+  padding-top: 50px;
+}

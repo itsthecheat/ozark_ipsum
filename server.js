@@ -2,19 +2,47 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-var words = require('./api/generator ').words;
+var quotes = require('./api/quotes.js').quotes;
 
-console.log(words);
 //serve static from React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.json());
+
+// get number of paragraphs from input
+// app.post("/", function(req, res) {
+//   const numParagraphs = req.body.paragraphs;
+//   console.log(numParagraphs);
+// });
 
 //list of items
 app.get('/api/getList', (req, res) => {
-  var list = ["item1", "item2"];
-  res.json(list);
+  res.json(paragraph());
   console.log('List sent!');
 });
+
+//generate random quote for list of quotes
+function randomQuote () {
+  let sentence = quotes[Math.floor(Math.random() * quotes.length)]
+  return sentence  + ' ';
+};
+
+//5 random sentences to create a paragraph
+function paragraph () {
+  let paragraph = "";
+  for(let i = 0; i < 6; i++) {
+    paragraph = paragraph + randomQuote();
+  }
+  return paragraph;
+}
+
+// function loremIpsum () {
+//   let loremIpsum = "";
+//   for(let i = 0; i < 2; i++) {
+//   loremIpsum = loremIpsum + "<br/>" + paragraph();
+//   }
+//   return loremIpsum;
+// }
+// console.log(loremIpsum())
 
 //handles request that don't match the one above
 app.get('*', (req, res) => {
@@ -23,11 +51,5 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port);
-
-// io.on('connection', socket => {
-//   console.log("New client connected!");
-//   socket.on("list updated")
-//   });
-// server.listen(3000);
 
 console.log('App is listening on port ' + port);
