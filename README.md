@@ -1,3 +1,3 @@
-# therapy_ipsum
+# Ozark Ipsum
 
-A theraputic lorem ipsum generator built on React and Express. Bootstrapped with create-react-app.
+A lorem ipsum generator built on React and Express. Bootstrapped with create-react-app.
