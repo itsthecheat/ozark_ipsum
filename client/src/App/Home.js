@@ -1,39 +1,30 @@
 import React, { Component } from 'react';
 
 import { Container, Row, Col, Form } from 'react-bootstrap';
+import {quotes} from "./quotes";
 import styles from './Home.module.css';
-// import axios from 'axios';
+import TextContainer from "./TextContainer"
+// import axios from 'axios'; **server version
 
 class Home extends Component {
   // Initialize the state
   constructor(props){
     super(props);
     this.state = {
-      paragraph: [],
+      text: ["Enter a number you fuckin' bitch wolf."],
       numParagraphs: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }
-  // Fetch the paragraph on first mount
-  componentDidMount() {
-    this.getList();
-  }
+  // **server version Fetch the text on first mount
+  // componentDidMount() {
+  //   this.getList()
+  // }
 
-  // Retrieves the paragraph of random quotes from the Express app
-  getList = () => {
-    fetch('/api/getList')
-    .then(res => res.json())
-    .then(paragraph => this.setState({ paragraph }))
-  }
-
-  handleChange(e) {
-        this.setState({numParagraphs: e.target.value});
-      }
-
-  //**server rendering
+//**server rendering
   // handleSubmit(e) {
   //   e.preventDefault();
-    // const data = { paragraphs: this.state.numParagraphs }
+    // const data = { texts: this.state.numParagraphs }
     // axios.post("/", data)
     // .then((res) => {
     //   console.log("Received input");
@@ -42,29 +33,47 @@ class Home extends Component {
     // })
   // }
 
+  // **server version**
+  //Retrieves the text of random quotes from the Express app
+  // getList = () => {
+  //   fetch('/api/getList')
+  //   .then(res => res.json())
+  //   .then(text => this.setState({ text }))
+  // }
+
+handleChange(e) {
+  this.setState({numParagraphs: e.target.value}, this.generator);
+}
 generator () {
   this.setState({
-    paragraph: this.ozarkIpsum(this.state.numParagraphs, this.state.paragraph)
+    text: this.ozarkIpsum(this.state.numParagraphs, quotes)
   })
 }
-ozarkIpsum (numParagraphs, paragraph) {
+
+//logic to build random paragraphs
+ozarkIpsum (numParagraphs, quotes) {
+  var text = "";
   if (numParagraphs < 1) {
-    return "Please enter a number you fuckin' bitch wolf."
+    return "Enter a number you fuckin' bitch wolf."
   }
-  var ipsum = "";
-  for(let i = 0; i < numParagraphs; i++) {
-    ipsum = ipsum + paragraph;
+  //create number of paragraphs based on user input
+  for (let i = 0; i < numParagraphs; i++) {
+    //grab a random quote
+    var sentence = "";
+    for ( let j = 0; j < 6; j++) {
+      let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      sentence = sentence + randomQuote + ' ';
+    }
+    text += "<p>" + sentence + "</p>"
   }
-  return ipsum;
+  return text
 }
 
   render() {
-    const { paragraph } = this.state;
-
     return (
-      <Container>
+      <Container fluid>
         <Row className="justify-content-md-center">
-        <h1>Ozark Ipsum</h1>
+        <h1 className={styles.header}>Ozark Ipsum</h1>
         </Row>
         <Row className="justify-content-md-center">
           <Form>
@@ -74,13 +83,7 @@ ozarkIpsum (numParagraphs, paragraph) {
           </Form>
         </Row>
             {/* Display the Ipsum */}
-            <Row className="justify-content-md-center">
-              <Col lg={8} md={8} sm={12} className={styles.generatedText}>
-                {/* Render the paragraph of items */}
-                {paragraph}
-              </Col>
-            </Row>
-
+          <TextContainer text= {this.state.text} />
     </Container>
     );
   }
