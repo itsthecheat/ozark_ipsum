@@ -1,3 +1,6 @@
 .generatedText {
-  padding-top: 100px;
+  font-family: 'Hind Madurai', sans-serif;
+  padding: 25px;
+  border: dotted white 2px;
+  margin: 20px;
 }

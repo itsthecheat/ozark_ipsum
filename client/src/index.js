@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Home from './App/Home';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+require ('typeface-hind-madurai');
+require ('typeface-poppins');
 
 ReactDOM.render(
   <React.StrictMode>

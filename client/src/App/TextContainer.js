@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import styles from './TextContainer.module.css';
 
 

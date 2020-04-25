@@ -1,7 +1,52 @@
-
+:global body {
+  background-color: black;
+  color: white;
+}
+:global a {
+  color: white;
+  transition: all 0.3s;
+}
+:global a:hover {
+  color: grey;
+  text-decoration: none;
+}
 :global .container {
-  padding-top: 50px;
+  padding-top: 25px;
+}
+.formRow {
+  justify-content: center;
+}
+:global form {
+  padding: 25px;
 }
 .header {
-  padding-top: 100px;
+  font-family: "Poppins";
+  font-weight: normal;
+  text-align: center;
+  padding-top: 50px;
+}
+.logo {
+  padding-top: 50px;
+  max-width: 250px;
+}
+.clipboard {
+  padding-left: 20px;
+  text-align: center;
+}
+.clipboard:hover{
+  color: green;
+}
+.footer {
+  font-size: 10px;
+  bottom: 0;
+  position: fixed;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+@media all and (max-width: 480px) {
+  .clipboard {
+  padding-left: 5px;
+  text-align: left;
+  }
 }
