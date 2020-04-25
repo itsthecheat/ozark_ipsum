@@ -82,7 +82,7 @@ ozarkIpsum (numParagraphs, quotes) {
          </Col>
          <Col lg={12} md={12} sm={12}>
            <h1 className={styles.header}>Ozark Ipsum</h1>
-           <p style={{textAlign: 'center', fontSize: '12px'}}>by <a href="lesliethe.dev">leslie behum </a><a href="https://www.github.com/itsthecheat"><FiGithub style={{fontSize: '16px'}} /></a></p>
+           <p style={{textAlign: 'center', fontSize: '12px'}}>by <a href="https://lesliethe.dev">leslie behum </a><a href="https://www.github.com/itsthecheat"><FiGithub style={{fontSize: '16px'}} /></a></p>
          </Col>
 
         </Row>
@@ -105,7 +105,8 @@ ozarkIpsum (numParagraphs, quotes) {
             {/* Display the Ipsum */}
           <TextContainer text={this.state.text} onChange={({target: {text}}) => this.setState({text, copied: false})}/>
 
-        <div className={styles.footer}>Icons - Lake: Adrien Coquet, Quotes: Bakunetsu Kaito, Mountain: alice noir, Paper: NOVILAMISASTRA courtesy of <a href="https://thenounproject.com">The Noun Project.</a></div>
+            <div className={styles.footer}>Icons - Lake: Adrien Coquet, Quotes: Bakunetsu Kaito, Mountain: alice noir, Paper: NOVILAMISASTRA courtesy of <a href="https://thenounproject.com">The Noun Project.</a>
+            </div>
     </Container>
     );
   }
