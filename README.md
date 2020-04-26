@@ -4,7 +4,7 @@ A lorem ipsum generator built on React and Express. Initially rendered data from
 
 [https://ozark-ipsum.lesliethe.dev](https://ozark-ipsum.lesliethe.dev)
 
-##To Do
+## To Do
 * Add alert to indicate successful copy to clipboard
 * When copying paragraphs to clipboard, `<p>` tag is copied from HTML being set in component.
 * Organize components
